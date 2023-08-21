@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './Weather.css';
 
 const WeatherApp = () => {
     const [city, setCity] = useState('');
@@ -35,10 +36,16 @@ const WeatherApp = () => {
             />
             <button onClick={fetchWeatherData}>Get Weather</button>
             {weatherData && (
-                <div>
-                    <h2>{weatherData.location.name}</h2>
-                    <p>Temperature: {weatherData.current.temp_c}°C</p>
-                    <p>Weather: {weatherData.current.condition.text}</p>
+                <div className="main">
+                    <p className="header">{weatherData.location.name}</p>
+                    <div>
+                        <p className="day">Weather: {weatherData.current.condition.text}</p>
+                    </div>
+
+                    <div>
+                        <p className="temp">Temprature: {weatherData.current.temp_c} &deg;C</p>
+                    </div>
+
                 </div>
             )}
         </div>
